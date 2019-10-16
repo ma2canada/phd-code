@@ -66,4 +66,4 @@ plt.xlim(4,20)
 plt.ylim(1E0,1E5)
 plt.legend(loc=1,fontsize=fntsz)#1 - 4 are the corners
 plt.show()
-tauvK.savefig("coupled-logistic-data-vs-Gillespie.pdf",bbox_inches='tight')
+#tauvK.savefig("coupled-logistic-data-vs-Gillespie.pdf",bbox_inches='tight')
