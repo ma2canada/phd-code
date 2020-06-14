@@ -30,22 +30,19 @@ likemysoul=[];countr=0;
 for line in fly1:
     likemysoul.append([]);
     prt=line.split("\t");
-    #print(countr)
-    #print("the problem is",prt[-1],"<-- this thing here")
-    #print(len(prt[-1]))
-    #if len(prt[-1])!=0: print("it is")
-    for elem in prt[:-1]:
+    for elem in prt:
         if(elem!='\n'):# or len(elem)!=0 or elem==prt[-1]):
             #print(elem,"okay?")
             likemysoul[-1].append(float(elem));
+        else:
+            print("this last element is just slash n")
     countr+=1;
 likemysoul=np.array(likemysoul)
 #print("argmax",np.argmax(np.array(likemysoul)))
 print("shape",np.shape(np.array(likemysoul)))
 print("x,y",len(justx),len(justy))
 print("I hope it's x,y = ",len(likemysoul[0]),len(likemysoul))
-#X,Y=np.meshgrid(justx,justy)
-#print("shape",len(X),len(Y))
+print("each line was %i long, and there were %i lines" %(len(prt),countr))
 
 """plotting the data in a heatmap"""
 plt.contourf(justx, justy, likemysoul, cmap=plt.cm.gray)#, norm=LogNorm())#,levels=25
@@ -184,8 +181,8 @@ stoptimeH=0.5
 def SIR_Hamiltonian(t, y): return [consts[0]*(consts[1]-y[0])-consts[2]*y[0]*y[1]*y[3]/consts[1], consts[2]*y[0]*y[1]*(2*y[3]-y[2])/consts[1]-consts[3]*y[1], consts[0]*(y[2]-1)+consts[2]*(y[2]-y[3])*y[1]*y[3]/consts[1], consts[3]*(y[3]-1)+consts[2]*(y[2]-y[3])*y[0]*y[3]/consts[1]]
 solH = solve_ivp(SIR_Hamiltonian, [0.0, stoptimeH], [100,10,1-eps,1],dense_output=True)
 #solH = solve_ivp(SIR_Hamiltonian, [0.0, stoptimeH], [200-eps,1+eps,1,1],dense_output=True)
-print(solH.t)
-print(solH.y)
+#print(solH.t)
+#print(solH.y)
 tH = np.linspace(0, stoptimeH, 300)
 xH = solH.sol(tH)
 plt.plot(xH[0],xH[1],'g--',linewidth=3)

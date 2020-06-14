@@ -303,6 +303,7 @@ def makeJemtrix(params,maxi):
     datvec.append(bdr.bn(maxi-1,maxi,params));
     '''print("out of",(maxi)*(maxi+1))'''
     trix = sparse.coo_matrix((datvec,(rowvec,colvec)), shape=((maxi)*(maxi+1),(maxi)*(maxi+1)))
+    #print("dummy, the (square) shape is %i"%(maxi*maxi+maxi))
     return trix
 
 def make0emtrix(params,maxi):
